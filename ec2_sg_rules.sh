@@ -2,7 +2,7 @@
 
 # use the faws toolbox to grab the aws accounts for the customer
 aws_accounts=$(faws account list-accounts -r 1122393 |grep 'AWS Account'|awk '{print $3}')
-#aws_accounts=(674898515610 732919424402)
+
 
 # print the csv headers to the output file
 echo "\"Account\"\,\"Region\"\,\"Group-Name\"\,\"Group-ID\"\,\"In\/Out\"\,\"Protocol\"\,\"Port\"\,\"Source/Destination\"" > ec2_sg_rules.csv
