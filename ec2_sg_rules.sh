@@ -1,7 +1,8 @@
 #!/bin/bash
 
+DDI=1122393; 
 # use the faws toolbox to grab the aws accounts for the customer
-aws_accounts=$(faws account list-accounts -r 1122393 |grep 'AWS Account'|awk '{print $3}')
+aws_accounts=$(faws account list-accounts -r $DDI |grep 'AWS Account'|awk '{print $3}')
 
 
 # print the csv headers to the output file
@@ -12,6 +13,6 @@ for aws_account in ${aws_accounts[@]}
 do
     echo $aws_account
     # log into the specific account
-    DDI=1122393; ACCT=$aws_account; faws -r $DDI env -a $ACCT && eval "$(faws -r $DDI env -a $ACCT)"
+    ACCT=$aws_account; faws -r $DDI env -a $ACCT > /dev/null && eval "$(faws -r $DDI env -a $ACCT)"
     python3 ./ec2_sg_rules.py $aws_account >> ec2_sg_rules.csv
 done
