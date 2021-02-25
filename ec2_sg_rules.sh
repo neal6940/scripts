@@ -1,4 +1,9 @@
 #!/bin/bash
+###############################################################################
+# neal6940 - 2021-02-24
+# Script to call a Python program that outputs security group info
+#
+###############################################################################
 
 DDI=1122393; 
 # use the faws toolbox to grab the aws accounts for the customer
